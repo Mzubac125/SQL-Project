@@ -3,7 +3,7 @@ Covid 19 Data Exploration
 */
 
 Select *
-From `portfolioprojects`.`coviddeaths`
+From PortfolioProject..CovidDeaths
 Where continent is not null 
 order by 3,4
 
@@ -11,7 +11,7 @@ order by 3,4
 -- Select Data that we are going to be starting with
 
 Select Location, date, total_cases, new_cases, total_deaths, population
-From `portfolioprojects`.`coviddeaths`
+From PortfolioProject..CovidDeaths
 Where continent is not null 
 order by 1,2
 
