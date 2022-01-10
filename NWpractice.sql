@@ -75,3 +75,24 @@ FROM
 Orders
 Order by
 NEWID()
+
+--Find the nth highest UnitPrice for a product
+SELECT DISTINCT
+	ProductID, 
+	UnitPrice
+FROM(
+SELECT *,
+	DENSE_RANK() OVER (order by UnitPrice desc) as rank_price
+FROM 
+[Order Details])od
+WHERE
+rank_price = n
+
+--check to see if there are any duplicate contact names
+SELECT 
+	ContactName
+FROM 
+(Select *,
+row_number() OVER (partition by ContactName order by CustomerID) as rn
+FROM Customers) c
+WHERE rn > 1
